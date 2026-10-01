@@ -1,0 +1,92 @@
+{
+  "dataset_version": "1.0",
+  "last_updated": "2026-09-30",
+  "records": [
+    {
+      "id": "T39-local-inference-run2",
+      "date": "2026-09-30",
+      "category": "local-inference",
+      "title": "On-device inference baseline and tool-call measurements",
+      "revision": "llama.cpp 0.4.1 baseline",
+      "model": "LFM2.5 1.2B Instruct Q4_0",
+      "execution_path": "local",
+      "device_class": "32-bit ARM Android device, 8-core, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "T39 / local inference run 2",
+      "result": "Basic inference and tool-call behavior were measurable. Repeated tool-call tests selected the intended directory tool and produced the intended argument in 3/3 runs for the tested case.",
+      "measurements": {
+        "cold_load_ms": 1290,
+        "short_turn_prompt_tok_s": 3.1,
+        "short_turn_generation_tok_s": 2.4,
+        "tool_selection_correct": "3/3",
+        "tool_argument_correct": "3/3",
+        "tool_target_correct": "3/3",
+        "note": "Long-context tool-call prefill remained substantially slower than short-turn inference."
+      },
+      "evidence": "measured",
+      "notes": "Published as a sanitized device class. Exact handset identity, package paths, build hashes and raw logs remain private.",
+      "source": "private test record T39, 2026-09-30"
+    },
+    {
+      "id": "T39-core-inference-device",
+      "date": "2026-09-30",
+      "category": "device-validation",
+      "title": "Core inference device test suite",
+      "revision": "alpha.95 test build",
+      "model": "LFM2.5 1.2B Instruct Q4_0",
+      "execution_path": "local",
+      "device_class": "32-bit ARM Android device, 8-core, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "Core inference device test suite",
+      "result": "18/18 tests passed in the complete device run. Model import, load-failure diagnostics, model-specific checks and inference-path checks completed successfully; one earlier run was interrupted by process control conditions and was repeated to completion.",
+      "measurements": {
+        "tests_passed": 18,
+        "tests_total": 18,
+        "complete_run_minutes": 89.9
+      },
+      "evidence": "measured",
+      "notes": "The public record reports the test outcome and device class only; raw runner output and unique build/device identifiers are retained privately.",
+      "source": "private core.inference device record, 2026-09-30"
+    },
+    {
+      "id": "playtest-engineering-corrections",
+      "date": "2026-09-18",
+      "category": "playtest",
+      "title": "Adversarial playtest findings converted into engineering corrections",
+      "revision": "alpha.22 and subsequent corrections",
+      "model": null,
+      "execution_path": null,
+      "device_class": "Android test device",
+      "android": "Android 14 class",
+      "protocol": "Human playtest + engineering review",
+      "result": "A set of high-impact workflow failures was reproduced and corrected, including runtime-status presentation, image handling, cross-model task continuity, sanctioned HTML preview, execution-state cleanup, transcript persistence, and reopening the last conversation.",
+      "measurements": {
+        "critical_findings_corrected": 1,
+        "high_findings_corrected": 3,
+        "medium_findings_corrected": 5
+      },
+      "evidence": "derived",
+      "notes": "The counts summarize the documented findings rather than representing a new benchmark. Historical engineering records remain available in the private project.",
+      "source": "engineering/playtest history"
+    },
+    {
+      "id": "architecture-runtime-resilience",
+      "date": "2026-09-18",
+      "category": "runtime-resilience",
+      "title": "Runtime and workflow resilience review",
+      "revision": "alpha.23–alpha.26",
+      "model": null,
+      "execution_path": null,
+      "device_class": "Android",
+      "android": "Android 14+ platform constraints",
+      "protocol": "Engineering review and implementation follow-up",
+      "result": "The reviewed workflow includes explicit execution state, recovery paths, persisted activity, project preview through a sanctioned local server, workspace transfer, Git operations inside the workspace, structured test execution results, and persisted image attachments for retry.",
+      "measurements": {
+        "review_scope": "runtime, persistence, preview, workspace, git, test execution"
+      },
+      "evidence": "derived",
+      "notes": "This is a capability-history record, not a performance benchmark.",
+      "source": "engineering review history"
+    }
+  ]
+}
