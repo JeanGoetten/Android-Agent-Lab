@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Android Agent Lab public test result",
+  "type": "object",
+  "required": ["id", "date", "category", "result", "evidence"],
+  "properties": {
+    "id": {"type":"string"},
+    "date": {"type":"string","format":"date"},
+    "category": {"type":"string"},
+    "title": {"type":"string"},
+    "revision": {"type":"string"},
+    "model": {"type":["string","null"]},
+    "execution_path": {"type":["string","null"],"enum":["api","local","mixed",null]},
+    "device_class": {"type":["string","null"]},
+    "android": {"type":["string","null"]},
+    "protocol": {"type":["string","null"]},
+    "result": {"type":"string"},
+    "measurements": {"type":"object","additionalProperties":true},
+    "evidence": {"type":"string","enum":["measured","derived","estimated","planned"]},
+    "notes": {"type":"string"},
+    "source": {"type":["string","null"]}
+  },
+  "additionalProperties": false
+}
