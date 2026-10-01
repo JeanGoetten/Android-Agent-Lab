@@ -28,7 +28,7 @@ Evaluation areas include:
 - notifications and user-decision flows;
 - performance across device classes.
 
-**[Browse the published test results →](evaluation/results/public-results.json)**
+**[Browse the published test results →](https://jeangoetten.github.io/Android-Agent-Lab/results.html)**
 
 The [evaluation dataset](evaluation/README.md) is the canonical public location for structured test records.
 
