@@ -41,6 +41,9 @@ The [evaluation dataset](evaluation/README.md) is the canonical public location 
 - [Data boundaries](docs/privacy-boundaries.md)
 - [Engineering history](docs/engineering-history.md)
 - [Public documentation index](docs/README.md)
+- [GitHub Wiki](https://github.com/JeanGoetten/Android-Agent-Lab/wiki)
+
+The Wiki is a navigation-oriented companion for stable explanations. Versioned technical records remain in the repository.
 
 ## Technical record
 
