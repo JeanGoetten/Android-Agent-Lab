@@ -59,4 +59,10 @@ The repository can contain:
 
 The public site presents selected data in a readable interface while the repository preserves the underlying versioned records.
 
+## Community
+
+The public site includes a community portal for bug reports, feature requests, ideas, and UX feedback. GitHub Issues remain the public conversation and engineering record.
+
+[Open the community portal](https://jeangoetten.github.io/Android-Agent-Lab/community.html)
+
 [Open the GitHub Pages site](https://jeangoetten.github.io/Android-Agent-Lab/) · [Open the repository](https://github.com/JeanGoetten/Android-Agent-Lab)

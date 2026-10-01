@@ -1,0 +1,16 @@
+name: Idea
+description: Share an experiment, direction, or use case.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should we explore?
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why it matters
+      description: What use case, opportunity, or observation motivated the idea?

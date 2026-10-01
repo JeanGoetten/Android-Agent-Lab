@@ -1,0 +1,16 @@
+name: UX feedback
+description: Report confusing, awkward, slow, or unclear product experience.
+title: "[UX] "
+body:
+  - type: textarea
+    id: experience
+    attributes:
+      label: What was the experience?
+      description: Describe what you were trying to accomplish and where the experience became difficult.
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What would improve it?
+      description: Describe the change that would make the experience clearer or easier.

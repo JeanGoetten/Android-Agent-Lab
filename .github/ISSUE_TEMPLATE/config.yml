@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Technical documentation
+    url: https://jeangoetten.github.io/Android-Agent-Lab/
+    about: Read the public technical record before opening a request.
