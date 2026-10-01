@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Technical documentation and evaluation record for Android Agent.">
+  <meta name="description" content="Public technical record, evaluation data, and engineering history for Android Agent.">
   <title>Android Agent Lab</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,8 +12,9 @@
     <a class="wordmark" href="./">ANDROID AGENT <span>LAB</span></a>
     <nav aria-label="Primary navigation">
       <a href="#focus">Focus</a>
-      <a href="#evaluation">Evaluation</a>
-      <a href="#boundary">Boundary</a>
+      <a href="#results">Results</a>
+      <a href="#record">Record</a>
+      <a href="#docs">Docs</a>
       <a href="https://github.com/JeanGoetten/Android-Agent-Lab">Repository</a>
     </nav>
   </header>
@@ -23,13 +24,12 @@
       <p class="eyebrow">PUBLIC TECHNICAL RECORD</p>
       <h1>Android Agent<br><em>Lab</em></h1>
       <p class="lede">
-        A public technical surface for documenting the architecture,
-        evaluation methodology, constraints, and selected measured results
-        of Android Agent.
+        A public technical surface for the architecture, evaluation data,
+        measured results, and engineering history of Android Agent.
       </p>
-      <div class="hero-meta">
-        <span class="status-dot"></span>
-        <span>Publication surface in development</span>
+      <div class="hero-actions">
+        <a class="button primary" href="#results">View test results</a>
+        <a class="button" href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Open evaluation data</a>
       </div>
     </section>
 
@@ -38,13 +38,13 @@
       <div class="section-content">
         <h2>Project control on Android</h2>
         <p>
-          The primary engineering problem is reliable control of user
-          development projects under mobile-platform constraints. AI models
-          are one layer of that system, not the whole product.
+          Android Agent combines project structure, execution state, model
+          interaction, Android runtime behavior, and user control in one
+          mobile development workflow.
         </p>
         <div class="feature-list">
           <article><b>01</b><span>Execution state and recovery</span></article>
-          <article><b>02</b><span>Process death and battery constraints</span></article>
+          <article><b>02</b><span>Process lifecycle and battery constraints</span></article>
           <article><b>03</b><span>Workspace and filesystem safety</span></article>
           <article><b>04</b><span>Network and API failure handling</span></article>
           <article><b>05</b><span>User decisions and cancellation</span></article>
@@ -53,68 +53,125 @@
       </div>
     </section>
 
-    <section class="section-grid" id="evaluation">
-      <div class="section-label">02 / MODEL EXECUTION</div>
+    <section class="results-section" id="results">
+      <div class="section-label">02 / TEST RESULTS</div>
       <div class="section-content">
-        <div class="callout">
-          <span class="callout-key">LOW-END ANDROID</span>
-          <strong>API-based models are currently the primary path.</strong>
-          <p>
-            Local inference remains a secondary capability. On low-end
-            hardware, CPU-only throughput can make interactive execution
-            impractical. Local-model results are therefore kept as a separate
-            evaluation track rather than treated as the project's general
-            performance target.
-          </p>
+        <div class="results-heading">
+          <div>
+            <h2>Published measurements</h2>
+            <p>
+              Sanitized result records are loaded from the versioned public
+              dataset. Each record keeps its test conditions, evidence status,
+              and provenance without exposing private operational data.
+            </p>
+          </div>
+          <a class="text-link" href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Dataset →</a>
         </div>
-        <p>
-          The test program can exercise multiple API models in the same
-          development workflow. Model choice is evaluated in the context of
-          project control, reliability, latency, cost, and recovery rather
-          than by throughput alone.
-        </p>
-        <a class="text-link" href="docs/evaluation.md">Read the evaluation scope →</a>
+        <div id="results-list" class="results-list" aria-live="polite">
+          <p class="loading">Loading published results…</p>
+        </div>
       </div>
     </section>
 
-    <section class="section-grid">
-      <div class="section-label">03 / METHOD</div>
+    <section class="section-grid" id="record">
+      <div class="section-label">03 / ENGINEERING RECORD</div>
       <div class="section-content">
-        <h2>Evidence before generalization</h2>
+        <h2>What the lab records</h2>
         <p>
-          Published observations are classified as measured, derived,
-          estimated, or planned. Results are reported at the level of detail
-          needed to interpret them without exposing private operational data.
+          The public record can grow beyond individual benchmarks. It can
+          preserve the evolution of architecture, playtest findings,
+          reliability corrections, model/runtime experiments, and repeat
+          measurements.
         </p>
-        <div class="method-line">
-          <span>TEST</span><i>→</i><span>MEASURE</span><i>→</i>
-          <span>INTERPRET</span><i>→</i><span>PUBLISH</span>
+        <div class="record-grid">
+          <article>
+            <span class="record-index">01</span>
+            <h3>Architecture</h3>
+            <p>Project workspace, execution control, runtime resilience, model layer, routing, and presentation.</p>
+          </article>
+          <article>
+            <span class="record-index">02</span>
+            <h3>Playtests</h3>
+            <p>Observed failures, root causes, corrections, and revalidation history.</p>
+          </article>
+          <article>
+            <span class="record-index">03</span>
+            <h3>Runtime experiments</h3>
+            <p>Inference, tool calling, process behavior, network conditions, and Android platform constraints.</p>
+          </article>
+          <article>
+            <span class="record-index">04</span>
+            <h3>Derived analysis</h3>
+            <p>Aggregates and comparisons generated from the underlying published records.</p>
+          </article>
         </div>
-        <a class="text-link" href="docs/methodology.md">Read the methodology →</a>
       </div>
     </section>
 
-    <section class="section-grid" id="boundary">
-      <div class="section-label">04 / PUBLIC BOUNDARY</div>
+    <section class="section-grid" id="docs">
+      <div class="section-label">04 / DOCUMENTATION</div>
       <div class="section-content">
-        <h2>Curated, not mirrored</h2>
-        <p>
-          Android Agent Lab is derived from the private development project.
-          It does not expose the private source tree, credentials, raw
-          operational logs, exact device identifiers, or unreleased builds.
-        </p>
-        <div class="boundary-grid">
-          <div><span class="tag public">PUBLIC</span><p>Architecture, protocols, sanitized measurements, limitations.</p></div>
-          <div><span class="tag private">PRIVATE</span><p>Source, credentials, personal data, raw logs, internal infrastructure.</p></div>
+        <h2>Technical documents</h2>
+        <p>Documents open on their corresponding GitHub repository pages, where their source and revision history remain visible.</p>
+        <div class="doc-list">
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/architecture.md"><span>Architecture</span><b>↗</b></a>
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/evaluation.md"><span>Evaluation</span><b>↗</b></a>
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/methodology.md"><span>Methodology</span><b>↗</b></a>
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/publishing-policy.md"><span>Publishing policy</span><b>↗</b></a>
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/privacy-boundaries.md"><span>Data boundaries</span><b>↗</b></a>
+          <a href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation"><span>Evaluation dataset</span><b>↗</b></a>
         </div>
-        <a class="text-link" href="docs/publishing-policy.md">Read the publication policy →</a>
       </div>
     </section>
   </main>
 
   <footer>
     <span>ANDROID AGENT LAB</span>
-    <span>Technical documentation and evaluation</span>
+    <span><a href="https://github.com/JeanGoetten/Android-Agent-Lab">GitHub</a> · Public technical record</span>
   </footer>
+
+  <script>
+    const esc = (value) => String(value ?? "").replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
+
+    const formatMeasurement = (key, value) => {
+      if (value === null || value === undefined) return "";
+      return "<div class=\"metric\"><span>" + esc(key.replaceAll("_"," ")) + "</span><strong>" + esc(value) + "</strong></div>";
+    };
+
+    async function loadResults() {
+      const target = document.getElementById("results-list");
+      try {
+        const response = await fetch("evaluation/results/public-results.json", {cache: "no-store"});
+        if (!response.ok) throw new Error("dataset unavailable");
+        const data = await response.json();
+        target.innerHTML = data.records.map(record => {
+          const metrics = Object.entries(record.measurements || {})
+            .filter(([k]) => k !== "note")
+            .slice(0, 4)
+            .map(([k,v]) => formatMeasurement(k,v)).join("");
+          return `
+            <article class="result-card">
+              <div class="result-top">
+                <span class="result-category">${esc(record.category)}</span>
+                <span class="evidence ${esc(record.evidence)}">${esc(record.evidence)}</span>
+              </div>
+              <h3>${esc(record.title)}</h3>
+              <p>${esc(record.result)}</p>
+              <div class="result-meta">
+                <span>${esc(record.date)}</span>
+                <span>${esc(record.device_class)}</span>
+                ${record.model ? "<span>" + esc(record.model) + "</span>" : ""}
+              </div>
+              <div class="metrics">${metrics}</div>
+            </article>`;
+        }).join("");
+      } catch (error) {
+        target.innerHTML = '<p class="loading">The published dataset could not be loaded. <a href="evaluation/results/public-results.json">Open the data file directly →</a></p>';
+      }
+    }
+    loadResults();
+  </script>
 </body>
 </html>
