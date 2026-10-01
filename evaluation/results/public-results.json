@@ -1,15 +1,29 @@
 {
-  "dataset_version": "1.0",
-  "last_updated": "2026-09-30",
+  "dataset_version": "1.1",
+  "last_updated": "2026-10-01",
   "records": [
     {
       "id": "T39-local-inference-run2",
       "date": "2026-09-30",
       "category": "local-inference",
       "title": "On-device inference baseline and tool-call measurements",
-      "revision": "llama.cpp 0.4.1 baseline",
+      "revision": "alpha.95 / llama.cpp 0.4.1 baseline",
+      "runtime": {
+        "engine": "llama.cpp",
+        "version": "0.4.1",
+        "commit": null,
+        "build_variant": "production CPU-only"
+      },
       "model": "LFM2.5 1.2B Instruct Q4_0",
       "execution_path": "local",
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device, 8-core, low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": "Mali-G52",
+        "provider": "maintainer device"
+      },
       "device_class": "32-bit ARM Android device, 8-core, low-memory class",
       "android": "Android 14 / API 34",
       "protocol": "T39 / local inference run 2",
@@ -21,11 +35,193 @@
         "tool_selection_correct": "3/3",
         "tool_argument_correct": "3/3",
         "tool_target_correct": "3/3",
-        "note": "Long-context tool-call prefill remained substantially slower than short-turn inference."
+        "note": "Historical short-turn measurement; not the later full T39 inference battery."
       },
       "evidence": "measured",
-      "notes": "Published as a sanitized device class. Exact handset identity, package paths, build hashes and raw logs remain private.",
+      "notes": "Historical record retained for provenance. Exact handset identity, package paths, build hashes and raw logs remain private.",
       "source": "private test record T39, 2026-09-30"
+    },
+    {
+      "id": "T39-round73-full-inference",
+      "date": "2026-10-01",
+      "category": "local-inference",
+      "title": "Round 73 full local-inference battery on physical M13",
+      "revision": "alpha.95 device-validation checkpoint / T39",
+      "runtime": {
+        "engine": "llama.cpp",
+        "version": "0.4.1",
+        "commit": null,
+        "build_variant": "production CPU-only"
+      },
+      "model": "LFM2.5 1.2B Instruct Q4_0",
+      "execution_path": "local",
+      "environment": {
+        "type": "physical",
+        "device_class": "Samsung Galaxy M13 5G / low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": "Mali-G52",
+        "provider": "maintainer device"
+      },
+      "device_class": "32-bit ARM Android device, 8-core, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "T39 / LocalInferenceDeviceTest full run, round 73",
+      "result": "33 core.inference cases completed green in the physical-device battery. The LocalInferenceDeviceTest execution provided the current full-run inference measurement.",
+      "measurements": {
+        "core_inference_tests": 33,
+        "full_run_seconds": 4754.6,
+        "prefill_tok_s": 31.7,
+        "generation_tok_s": 1.6,
+        "kv_reused_tokens": 748
+      },
+      "evidence": "measured",
+      "notes": "This record supersedes neither nor deletes the earlier short-turn measurement; it is a later, larger protocol. The 31.7 tok/s prefill value is tied to this physical-device run and should not be compared with generation throughput or with the older short-turn protocol without matching workload conditions.",
+      "source": "private T39 round-73 ledger record, 2026-10-01"
+    },
+    {
+      "id": "T137-llama-cpp-paired-battery",
+      "date": "2026-09-30",
+      "category": "runtime-comparison",
+      "title": "Controlled llama.cpp v0.4.1 × v0.5.0 paired battery",
+      "revision": "T137 / infra/llama-cpp-0.5.0 9318efc",
+      "runtime": {
+        "engine": "llama.cpp",
+        "version": "0.5.0",
+        "commit": "7fe450e19305b828c199d602c23a8337aaa1f03b",
+        "build_variant": "CPU-only; Vulkan opt-in disabled"
+      },
+      "model": "LFM2.5 1.2B Instruct Q4_0",
+      "execution_path": "local",
+      "environment": {
+        "type": "physical",
+        "device_class": "Samsung Galaxy M13 5G",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": "Mali-G52",
+        "provider": "maintainer device"
+      },
+      "device_class": "Samsung Galaxy M13 5G",
+      "android": "Android 14 / API 34",
+      "protocol": "T137 paired battery, five repetitions, alternating order, one warm-up discarded per install",
+      "result": "NEUTRAL on fixed-work rows. v0.5.0 showed no measured speed gain or regression against v0.4.1 within the paired battery's noise band.",
+      "measurements": {
+        "repetitions": 5,
+        "cold_process_load_median_ms": {
+          "v0_4_1": 1009,
+          "v0_5_0": 1017
+        },
+        "prefill_18_tokens_median_ms": {
+          "v0_4_1": 4637,
+          "v0_5_0": 4632
+        },
+        "first_token_median_ms": {
+          "v0_4_1": 4638,
+          "v0_5_0": 4633
+        },
+        "prefill_24_tokens_median_ms": {
+          "v0_4_1": 6116,
+          "v0_5_0": 6125
+        },
+        "warm_reload_median_ms": {
+          "v0_4_1": 992,
+          "v0_5_0": 997
+        },
+        "warm_prefill_14_tokens_median_ms": {
+          "v0_4_1": 3604,
+          "v0_5_0": 3606
+        },
+        "generation_tok_s": {
+          "v0_4_1": 3,
+          "v0_5_0": 3
+        },
+        "thermal_status": "0 throughout",
+        "battery_percent": "18–22",
+        "temperature_c": "30.3–31.2"
+      },
+      "evidence": "measured",
+      "notes": "Same physical device, same GGUF and instrumentation. Generation elapsed time was not compared because the two arms emitted different token counts. The separate Vulkan experiment measured the GPU offload path as 7.2× slower on prefill and +35.26 MB native library size; it remains build-time only.",
+      "source": "docs/LLAMA_CPP_0.5.0_DECISION.md and paired raw records"
+    },
+    {
+      "id": "alpha96-ci-avd-instrumented",
+      "date": "2026-10-01",
+      "category": "device-validation",
+      "title": "Round 73 instrumented suite on CI AVD",
+      "revision": "v0.1.0-alpha.96 / CI run 36903535647",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.0-alpha.96",
+        "commit": "60f18c15f49be51a97d1666c15ccc3e92ddabc51",
+        "build_variant": "CI instrumented test APK"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "headless Android Emulator",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "GitHub Actions"
+      },
+      "device_class": "headless Android Emulator",
+      "android": "Android 14 / API 34",
+      "protocol": "First CI instrumented suite run after account-block recovery",
+      "result": "The CI instrumented job was red: 330 tests, 3 failures and 27 skipped in approximately 3 minutes. The same three classes were green on the physical phone in the same development window, so this is an environment-sensitive result and is not treated as a product-wide failure.",
+      "measurements": {
+        "tests_total": 330,
+        "tests_failed": 3,
+        "tests_skipped": 27,
+        "duration_minutes": 3,
+        "failed_classes": [
+          "NotificationLayersDeviceTest.dOsCanaisTemPapeisDiferentesEODeAlertaNaoMexeNoAntigo",
+          "RunOwnerDeviceTest.oTurnoDoDonoRodaNoMainDeVerdadeEELiberadoNoFim",
+          "BackHierarchyDeviceTest.everyBackPopsExactlyOneLayerAndOnlyTheRootLeavesTheApp"
+        ],
+        "physical_cross_check": "same three classes green on physical device"
+      },
+      "evidence": "measured",
+      "notes": "AVD was headless with animations disabled by the CI step and used a fresh installation. The repository explicitly leaves triage open; the red is not explained away as code or environment without further reproduction.",
+      "source": "private round-73 ledger, commit 95caaa1"
+    },
+    {
+      "id": "alpha96-release-ci",
+      "date": "2026-10-01",
+      "category": "release-validation",
+      "title": "alpha.96 CI-built release artifact verification",
+      "revision": "v0.1.0-alpha.96",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.0-alpha.96",
+        "commit": "60f18c15f49be51a97d1666c15ccc3e92ddabc51",
+        "build_variant": "CI release + debug artifacts"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "CI build environment",
+        "android": null,
+        "abi": "x86_64 test target",
+        "gpu": null,
+        "provider": "GitHub Actions"
+      },
+      "device_class": "CI build environment",
+      "android": null,
+      "protocol": "CI release artifact build, download and post-build identity verification",
+      "result": "CI completed preflight, prune-artifacts, build, release and publish-packages successfully. Both published APKs were downloaded and re-measured; local and CI APKs differed by 16 bytes, attributed in the repository record to toolchain differences.",
+      "measurements": {
+        "ci_release_apk_bytes": 66244364,
+        "ci_debug_apk_bytes": 88576790,
+        "version_name": "0.1.0-alpha.96",
+        "version_code": 100096,
+        "db_version": 13,
+        "local_vs_ci_byte_delta": 16,
+        "ci_run_id": "36903535647"
+      },
+      "evidence": "measured",
+      "notes": "The public dataset records artifact identity and CI provenance without exposing private operational paths.",
+      "source": "private round-73 ledger, commit 95caaa1"
     },
     {
       "id": "T39-core-inference-device",
@@ -33,8 +229,22 @@
       "category": "device-validation",
       "title": "Core inference device test suite",
       "revision": "alpha.95 test build",
+      "runtime": {
+        "engine": "llama.cpp",
+        "version": "0.4.1",
+        "commit": null,
+        "build_variant": "production CPU-only"
+      },
       "model": "LFM2.5 1.2B Instruct Q4_0",
       "execution_path": "local",
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device, 8-core, low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": "Mali-G52",
+        "provider": "maintainer device"
+      },
       "device_class": "32-bit ARM Android device, 8-core, low-memory class",
       "android": "Android 14 / API 34",
       "protocol": "Core inference device test suite",
@@ -45,8 +255,44 @@
         "complete_run_minutes": 89.9
       },
       "evidence": "measured",
-      "notes": "The public record reports the test outcome and device class only; raw runner output and unique build/device identifiers are retained privately.",
+      "notes": "Retained as the earlier 18-test subset record; the later round-73 T39 record reports the expanded 33-case core.inference group.",
       "source": "private core.inference device record, 2026-09-30"
+    },
+    {
+      "id": "alpha96-pdf-device-validation",
+      "date": "2026-10-01",
+      "category": "attachment-validation",
+      "title": "PDF extraction device regression validation",
+      "revision": "v0.1.0-alpha.96",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.0-alpha.96",
+        "commit": "60f18c15f49be51a97d1666c15ccc3e92ddabc51",
+        "build_variant": "device test APK"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "Samsung Galaxy M13 5G",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": "Mali-G52",
+        "provider": "maintainer device"
+      },
+      "device_class": "Samsung Galaxy M13 5G",
+      "android": "Android 14 / API 34",
+      "protocol": "PdfExtractionDeviceTest",
+      "result": "The PDF extraction device regression suite passed 6/6 tests in 5.3 seconds, including the upgrade-path case that restores the bundled Python wheel and imports it after an app update.",
+      "measurements": {
+        "tests_passed": 6,
+        "tests_total": 6,
+        "duration_seconds": 5.3,
+        "upgrade_path_tested": true
+      },
+      "evidence": "measured",
+      "notes": "The paired fixes addressed stale site-packages detection and loss of the no-text-layer page sentence during AttachmentContent round trips.",
+      "source": "private round-73 ledger, commit 60f18c1"
     },
     {
       "id": "playtest-engineering-corrections",
@@ -54,8 +300,17 @@
       "category": "playtest",
       "title": "Adversarial playtest findings converted into engineering corrections",
       "revision": "alpha.22 and subsequent corrections",
+      "runtime": null,
       "model": null,
       "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "Android test device",
+        "android": "Android 14 class",
+        "abi": null,
+        "gpu": null,
+        "provider": null
+      },
       "device_class": "Android test device",
       "android": "Android 14 class",
       "protocol": "Human playtest + engineering review",
@@ -66,7 +321,7 @@
         "medium_findings_corrected": 5
       },
       "evidence": "derived",
-      "notes": "The counts summarize the documented findings rather than representing a new benchmark. Historical engineering records remain available in the private project.",
+      "notes": "Historical engineering summary.",
       "source": "engineering/playtest history"
     },
     {
@@ -75,8 +330,17 @@
       "category": "runtime-resilience",
       "title": "Runtime and workflow resilience review",
       "revision": "alpha.23–alpha.26",
+      "runtime": null,
       "model": null,
       "execution_path": null,
+      "environment": {
+        "type": "unknown",
+        "device_class": "Android",
+        "android": "Android 14+ platform constraints",
+        "abi": null,
+        "gpu": null,
+        "provider": null
+      },
       "device_class": "Android",
       "android": "Android 14+ platform constraints",
       "protocol": "Engineering review and implementation follow-up",
@@ -85,7 +349,7 @@
         "review_scope": "runtime, persistence, preview, workspace, git, test execution"
       },
       "evidence": "derived",
-      "notes": "This is a capability-history record, not a performance benchmark.",
+      "notes": "Capability-history record, not a performance benchmark.",
       "source": "engineering review history"
     }
   ]
