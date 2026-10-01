@@ -9,11 +9,35 @@
     "category": {"type":"string"},
     "title": {"type":"string"},
     "revision": {"type":"string"},
+    "runtime": {
+      "type":["object","null"],
+      "properties": {
+        "engine":{"type":"string"},
+        "version":{"type":"string"},
+        "commit":{"type":["string","null"]},
+        "build_variant":{"type":["string","null"]}
+      },
+      "required":["engine","version"],
+      "additionalProperties":false
+    },
     "model": {"type":["string","null"]},
     "execution_path": {"type":["string","null"],"enum":["api","local","mixed",null]},
-    "device_class": {"type":["string","null"]},
-    "android": {"type":["string","null"]},
-    "protocol": {"type":["string","null"]},
+    "environment": {
+      "type":["object","null"],
+      "properties": {
+        "type":{"type":"string","enum":["physical","avd","ci_avd","desktop","unknown"]},
+        "device_class":{"type":["string","null"]},
+        "android":{"type":["string","null"]},
+        "abi":{"type":["string","null"]},
+        "gpu":{"type":["string","null"]},
+        "provider":{"type":["string","null"]}
+      },
+      "required":["type"],
+      "additionalProperties":false
+    },
+    "device_class": {"type":[ "string","null"]},
+    "android": {"type":[ "string","null"]},
+    "protocol": {"type":[ "string","null"]},
     "result": {"type":"string"},
     "measurements": {"type":"object","additionalProperties":true},
     "evidence": {"type":"string","enum":["measured","derived","estimated","planned"]},
