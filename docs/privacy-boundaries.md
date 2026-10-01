@@ -1,37 +1,25 @@
-# Privacy and data boundaries
+# Data boundaries
 
-This document defines the minimum boundary between the private Android Agent project and Android Agent Lab.
+The public laboratory records technical information required to understand and reproduce published evaluations.
 
-## Private by default
+## Technical data
 
-The following remain private unless separately approved:
-- maintainer identity and account metadata;
-- exact development-machine paths;
-- device serials and unique hardware identifiers;
-- credentials and authentication material;
-- raw user/project content;
-- private repository references;
-- raw logs and crash dumps when they contain operational or personal data;
-- internal network, deployment, and infrastructure details.
+The public record can include:
+- software and runtime revisions;
+- model identifiers and execution paths;
+- sanitized device classes;
+- Android platform information;
+- test protocols;
+- measured timings and outcomes;
+- aggregate resource measurements;
+- structured logs and derived metrics when appropriate.
 
-## Public by design
+## Personal and operational data
 
-The public repository may contain:
-- architecture descriptions;
-- technical design rationale;
-- evaluation protocols;
-- sanitized test conditions;
-- aggregate measurements;
-- known limitations;
-- reproducible public documentation;
-- public-facing project status.
+Personal identifiers, credentials, authentication material, private filesystem paths, unique device identifiers, and internal infrastructure details are handled separately from the public test dataset.
 
-## Device information
+## Dataset principle
 
-Hardware is reported at the least-specific level that still matters to the result. Commercial device names are not required when a device class, Android API level, CPU/ABI class, or memory class is sufficient to interpret a measurement.
+The goal is to preserve the technical signal of a test while removing information that has no value for interpreting the result.
 
-## Cross-repository publication
-
-A future automated publication pipeline may read approved data from the private project and emit sanitized records into this repository. Such a pipeline must publish an explicit public schema rather than copying private files wholesale.
-
-The public repository must remain usable even if the private repository is unavailable.
+This boundary is applied during publication rather than after the public dataset has been assembled.
