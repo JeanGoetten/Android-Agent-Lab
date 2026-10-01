@@ -1,57 +1,40 @@
 # Evaluation methodology
 
-Android Agent Lab treats evaluation as part of the system design rather than as a collection of isolated benchmarks.
+Android Agent Lab maintains a structured record of testing and engineering observations.
 
-Each published result should make it possible to identify:
-- what was measured;
-- under which test class;
-- which software/runtime snapshot was used;
-- whether the value was measured, derived, estimated, or planned;
-- which constraints apply to the result.
+The objective is to make results comparable across software revisions, models, workflows, and device classes while keeping each measurement tied to its actual test conditions.
 
-## Current evaluation priority
+## Test record
 
-The current priority is reliable project control on Android.
+A published result should identify, as applicable:
 
-Relevant areas include:
-- task execution and state continuity;
-- recovery from process termination;
-- behavior under Android battery and background-execution constraints;
-- filesystem and workspace safety;
-- network/API failures and recovery;
-- model routing and context preparation;
-- user-decision points;
-- reproducibility of project operations.
+- test identifier;
+- test category;
+- software/runtime revision;
+- model and model path;
+- device class;
+- Android platform level;
+- test protocol;
+- observed result;
+- duration or latency;
+- success/failure state;
+- relevant notes.
 
-### Model execution
+## Result status
 
-The project uses both API-hosted and local models.
+Results use explicit evidence states:
 
-For low-end devices, API-hosted models are currently the primary path. Local inference is treated as a secondary capability because CPU-only inference at this hardware class can impose substantial latency.
+- **Measured** — directly observed during a test.
+- **Derived** — calculated from measured data.
+- **Estimated** — an approximation or model-based value.
+- **Planned** — a test or measurement that has not yet been performed.
 
-A local-inference measurement such as approximately 2.91 tokens/second is therefore evidence about that execution path, not a project-wide performance target or a basis for generalizing to all Android devices.
+## Test dimensions
 
-Cross-device comparison will be introduced only when the test matrix includes multiple device classes.
+The laboratory can record project operations, runtime behavior, model execution, and complete end-to-end workflows.
 
-## Publication classes
+## Data evolution
 
-Every public result should be classified as one of:
+Results are stored as structured records whenever practical. This allows new measurements to be added without rewriting historical documentation.
 
-- **Measured** — directly observed under a documented test protocol.
-- **Derived** — calculated from published measurements.
-- **Estimated** — explicitly modeled or approximated.
-- **Planned** — a future test or capability, not an observed result.
-
-## Reproducibility
-
-Published measurements should identify the minimum information needed to reproduce the test without exposing private operational details.
-
-The public record should prefer:
-- device class over exact device identity;
-- Android API level or platform family where relevant;
-- software/runtime version;
-- model family and configuration;
-- test protocol version;
-- aggregate outcome and relevant uncertainty.
-
-Exact device identifiers, personal information, private paths, credentials, and raw operational logs are never required for public reproducibility.
+The public dataset is intended to grow with the project and provide a persistent history of technical changes.
