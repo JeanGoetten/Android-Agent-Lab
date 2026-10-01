@@ -43,7 +43,7 @@ nav a, .text-link {
 }
 nav a:hover, .text-link:hover { color: var(--accent); }
 main { max-width: var(--max); margin: auto; padding: 0 28px; }
-.hero { padding: 112px 0 96px; max-width: 820px; }
+.hero { padding:48px 0 72px; max-width: 820px; }
 .eyebrow, .section-label, .callout-key, .tag {
   font-size: 10px;
   font-weight: 700;
