@@ -39,6 +39,7 @@ The [evaluation dataset](evaluation/README.md) is the canonical public location 
 - [Evaluation methodology](docs/methodology.md)
 - [Publishing policy](docs/publishing-policy.md)
 - [Data boundaries](docs/privacy-boundaries.md)
+- [Engineering history](docs/engineering-history.md)
 - [Public documentation index](docs/README.md)
 
 ## Technical record
