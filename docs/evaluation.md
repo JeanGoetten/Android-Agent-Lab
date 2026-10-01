@@ -1,56 +1,46 @@
 # Evaluation
 
-The evaluation program measures the reliability of Android Agent as a project-control system on Android.
+Android Agent Lab measures the behavior of Android Agent through repeatable tests and real project workflows.
 
-## Primary areas
+## Evaluation areas
 
-### Project control
-- creation and modification of project files;
-- task execution;
-- task state consistency;
-- user-decision handling;
-- recovery after interrupted work.
+| Area | Examples |
+| --- | --- |
+| Project control | Project creation, files, tasks, execution |
+| Runtime resilience | Process lifecycle, interruptions, recovery |
+| Android constraints | Battery, background execution, storage, permissions |
+| Network | API availability, timeouts, retries, recovery |
+| Models | Latency, response behavior, routing, context |
+| User control | Decisions, cancellation, notifications, execution state |
+| End-to-end workflows | Complete project operations |
 
-### Android constraints
-- process and task survival;
-- battery-management and background-execution constraints;
-- storage permissions and workspace boundaries;
-- network availability and timeout behavior.
+## Model evaluation
 
-### Model layer
-- API model reliability and latency;
-- model routing;
-- context compression and preparation;
-- local inference as a secondary execution path;
-- behavior across different device classes when the test matrix permits comparison.
+Testing can involve multiple API models in the same project workflow. Measurements can capture model response time, execution behavior, reliability, and interaction with the surrounding Android runtime.
 
-### User-facing reliability
-- notification behavior;
-- execution-state visibility;
-- safe cancellation and stopping;
-- restoration of project/chat state;
-- failure messages and recovery paths.
+Local model execution is also recorded where relevant. Results are associated with their hardware and runtime conditions so that measurements from different device classes can be compared as the dataset expands.
 
-## Interpreting model performance
+## Data model
 
-Model throughput is not treated as the sole indicator of system viability.
+Each test record should make the experimental conditions explicit.
 
-For low-end hardware, API-based inference is currently the principal model path. Local inference measurements are retained as evidence for a separate capability track and will be compared across hardware classes later.
-
-A result is not generalized beyond the population and conditions under which it was measured.
-
-## Results format
-
-Future result records will use a compact schema such as:
-
-| Field | Meaning |
+| Field | Description |
 | --- | --- |
 | Test | Test identifier |
-| Class | Evaluation category |
-| Runtime | Relevant runtime/software snapshot |
-| Model path | API or local |
-| Device class | Sanitized hardware class |
-| Protocol | Evaluation protocol version |
+| Category | Evaluation category |
+| Revision | Software/runtime revision |
+| Model | Model identifier |
+| Path | API or local |
+| Device class | Hardware class |
+| Platform | Android platform level |
+| Protocol | Test protocol |
 | Result | Observed outcome |
-| Status | measured / derived / estimated / planned |
-| Notes | Constraints and interpretation |
+| Duration | Time measurement where applicable |
+| Status | Evidence status |
+| Notes | Interpretation and conditions |
+
+## Results
+
+The evaluation/ directory is the canonical public location for structured test data.
+
+Human-readable summaries may be generated from those records for the website and documentation.
