@@ -1,39 +1,45 @@
 # Android Agent Lab
 
-Android Agent Lab is the public technical surface for Android Agent.
+Android Agent Lab is the public technical record for Android Agent.
 
-It documents the project's architecture, evaluation methodology, selected measured results, and constraints without exposing the private source repository or maintainer-specific operational data.
+It presents the project's engineering work through architecture notes, evaluation protocols, test data, measured results, and technical observations.
 
-## Scope
+## Project focus
 
-The project is an Android development workspace centered on controlling and operating user projects safely on Android. The primary engineering problem is reliable project control under mobile-platform constraints: process termination, background execution limits, storage boundaries, permissions, network variability, task state, and other conditions that do not map cleanly to a desktop development environment.
+Android Agent is an Android development workspace for controlling user projects with AI-assisted execution.
 
-AI models are a component of that system, not the sole focus.
+The central engineering focus is reliable project operation on Android: maintaining task state, executing project operations, handling interruptions and platform constraints, coordinating model calls, and giving the user clear control over ongoing work.
 
-For low-end Android devices, the current evaluation direction prioritizes API-based models. Local inference remains an experimental capability and will be compared across device classes only when the test matrix includes additional hardware.
+The model layer supports this workflow through API-hosted and local models. Current testing includes multiple API models and examines their behavior within real project workflows.
 
-## Public / private boundary
+## Evaluation
 
-This repository is a curated publication surface, not a mirror of the private source repository.
+The laboratory records measurements from controlled tests and playtests.
 
-Public material may include:
-- architecture and design decisions;
+Evaluation areas include:
+- project and file operations;
+- task execution and state continuity;
+- interruption and recovery;
+- Android process and background constraints;
+- battery-management behavior;
+- network and API behavior;
+- model response and execution characteristics;
+- context preparation and routing;
+- notifications and user-decision flows;
+- performance across device classes.
+
+Results are published with their test conditions and interpretation so that changes can be followed over time.
+
+## Public technical record
+
+The repository is designed as a durable public record of the project's engineering work.
+
+It contains:
 - evaluation protocols;
-- sanitized measurements and aggregate results;
-- runtime/model version information when useful for reproducibility;
-- documented limitations and known failure modes.
+- structured test results;
+- measured performance data;
+- architecture documentation;
+- technical observations;
+- limitations and follow-up work.
 
-Private material remains excluded:
-- source code from the private application repository;
-- credentials, tokens, secrets, and private endpoints;
-- maintainer identity or personal data;
-- exact device identifiers and serial information;
-- filesystem paths and internal infrastructure details;
-- raw logs containing user or operational data;
-- unreleased builds and demos.
-
-## Status
-
-The public laboratory is being established. Results will be published incrementally as evaluation protocols stabilize.
-
-See [docs/methodology.md](docs/methodology.md) for the publication model and [docs/evaluation.md](docs/evaluation.md) for the evaluation scope.
+See docs/methodology.md and docs/evaluation.md.
