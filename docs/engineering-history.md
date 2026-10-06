@@ -63,6 +63,18 @@ The evaluation history also covers Android-specific conditions affecting long-ru
 
 These can become a dedicated public dataset as repeat measurements accumulate.
 
+
+## 2026-10-06 validation window
+
+The current development line reached **0.1.1-alpha.2** and added a new set of measured records to the public dataset:
+
+- the live local-model end-to-end path completed **3/3** runs on an Android AVD, including a real chat send, the expected `list_directory` call, KV-cache reuse and a durable answer;
+- the external process-death matrix completed **10/10** cases, including recovery of composer text and ordered attachments and explicit handling of a missing image copy;
+- the broader instrumented validation window completed **361 cases across 95 classes**, with **342 passed, 19 skipped and 0 completed-case failures** in the four recorded chunks;
+- one local-inference sampling case remains an **open measured red**: the model emitted no tool call in **0/3** executions despite the expected shortlist being present. This remains a model-sampling investigation rather than a declared tool-plumbing failure.
+
+The public dataset records these as append-only measurements. Device identity, package paths, process identifiers, credentials and raw operational logs remain outside the public record.
+
 ## Next public data layers
 
 The laboratory can progressively add:
