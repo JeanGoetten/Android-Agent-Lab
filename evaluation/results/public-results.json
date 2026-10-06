@@ -1,6 +1,6 @@
 {
-  "dataset_version": "1.1",
-  "last_updated": "2026-10-01",
+  "dataset_version": "1.2",
+  "last_updated": "2026-10-06",
   "records": [
     {
       "id": "T39-local-inference-run2",
@@ -57,7 +57,7 @@
       "execution_path": "local",
       "environment": {
         "type": "physical",
-        "device_class": "Samsung Galaxy M13 5G",
+        "device_class": "32-bit ARM Android device, low-memory class",
         "android": "Android 14 / API 34",
         "abi": "armeabi-v7a",
         "gpu": "Mali-G52",
@@ -94,13 +94,13 @@
       "execution_path": "local",
       "environment": {
         "type": "physical",
-        "device_class": "Samsung Galaxy M13 5G",
+        "device_class": "32-bit ARM Android device, low-memory class",
         "android": "Android 14 / API 34",
         "abi": "armeabi-v7a",
         "gpu": "Mali-G52",
         "provider": "maintainer device"
       },
-      "device_class": "Samsung Galaxy M13 5G",
+      "device_class": "32-bit ARM Android device, low-memory class",
       "android": "Android 14 / API 34",
       "protocol": "T137 paired battery, five repetitions, alternating order, one warm-up discarded per install",
       "result": "NEUTRAL on fixed-work rows. v0.5.0 showed no measured speed gain or regression against v0.4.1 within the paired battery's noise band.",
@@ -274,13 +274,13 @@
       "execution_path": null,
       "environment": {
         "type": "physical",
-        "device_class": "Samsung Galaxy M13 5G",
+        "device_class": "32-bit ARM Android device, low-memory class",
         "android": "Android 14 / API 34",
         "abi": "armeabi-v7a",
         "gpu": "Mali-G52",
         "provider": "maintainer device"
       },
-      "device_class": "Samsung Galaxy M13 5G",
+      "device_class": "32-bit ARM Android device, low-memory class",
       "android": "Android 14 / API 34",
       "protocol": "PdfExtractionDeviceTest",
       "result": "The PDF extraction device regression suite passed 6/6 tests in 5.3 seconds, including the upgrade-path case that restores the bundled Python wheel and imports it after an app update.",
@@ -351,6 +351,166 @@
       "evidence": "derived",
       "notes": "Capability-history record, not a performance benchmark.",
       "source": "engineering review history"
+    },
+    {
+      "id": "alpha2-live-local-loop",
+      "date": "2026-10-06",
+      "category": "local-inference",
+      "title": "Live local-model end-to-end loop",
+      "revision": "0.1.1-alpha.2 / current validation window",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.2",
+        "commit": null,
+        "build_variant": "device test APK"
+      },
+      "model": "LFM2.5 1.2B Instruct",
+      "execution_path": "local",
+      "environment": {
+        "type": "avd",
+        "device_class": "headless Android Emulator",
+        "android": "Android AVD",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "test environment"
+      },
+      "device_class": "headless Android Emulator",
+      "android": "Android AVD",
+      "protocol": "Live local-model first-request device test",
+      "result": "3/3 runs completed successfully. The real chat flow reached the on-device model, executed the expected list_directory tool call, reused KV-cache context on the next turn, and completed with a prose response.",
+      "measurements": {
+        "runs": "3/3",
+        "run_seconds": [
+          78,
+          97.6,
+          107.8
+        ],
+        "tool_call_correct": "3/3",
+        "tool": "list_directory",
+        "kv_reused_tokens": 852
+      },
+      "evidence": "measured",
+      "notes": "The measurement covers the production onboarding path, real chat route, real Send action, live local inference and durable transcript result. It is an end-to-end workflow measurement, not a throughput benchmark.",
+      "source": "private device validation record, 2026-10-06"
+    },
+    {
+      "id": "alpha2-process-death-composer",
+      "date": "2026-10-06",
+      "category": "runtime-resilience",
+      "title": "External process-death recovery for composer drafts",
+      "revision": "0.1.1-alpha.2 / database v17",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.2",
+        "commit": null,
+        "build_variant": "device test APK"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device, low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": null,
+        "provider": "maintainer test device"
+      },
+      "device_class": "32-bit ARM Android device, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "External process-death matrix using Android activity-manager kill",
+      "result": "The complete matrix of 10 external process-death cases passed. An unsent composer draft returned after process recreation with its text and attachment order; an image whose local copy disappeared returned explicitly marked as unavailable and the composer communicated that state.",
+      "measurements": {
+        "cases": "10/10",
+        "external_kill": true,
+        "draft_text_restored": true,
+        "attachment_order_restored": true,
+        "missing_image_state_restored": true
+      },
+      "evidence": "measured",
+      "notes": "The public record intentionally omits handset identity, package paths, process identifiers and raw logs. This validates recovery behavior across an externally terminated process, rather than an in-app navigation or rotation case.",
+      "source": "private process-death matrix record, 2026-10-06"
+    },
+    {
+      "id": "alpha2-instrumented-validation-window",
+      "date": "2026-10-06",
+      "category": "device-validation",
+      "title": "Instrumented validation window after the alpha.2 changes",
+      "revision": "0.1.1-alpha.2 / current validation window",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.2",
+        "commit": null,
+        "build_variant": "instrumented test APK"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device, low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": null,
+        "provider": "maintainer test device"
+      },
+      "device_class": "32-bit ARM Android device, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "95 instrumented classes executed in four resumable class-filtered chunks",
+      "result": "The completed validation chunks contain 342 passed cases and 19 skipped cases, with no completed-case failures. One targeted local-inference sampling case remains an explicitly measured open red and is tracked separately rather than being hidden by the aggregate.",
+      "measurements": {
+        "classes": 95,
+        "cases_completed": 361,
+        "passed": 342,
+        "skipped": 19,
+        "completed_failures": 0,
+        "open_targeted_inference_case": 1,
+        "chunks": {
+          "ui": "37 classes / 106 cases / 105 passed / 1 skipped",
+          "plan_artifacts": "20 classes / 112 cases / 108 passed / 4 skipped",
+          "runtime_tools_data": "30 classes / 125 cases / 115 passed / 10 skipped",
+          "core_inference_completed": "8 classes / 18 cases / 14 passed / 4 skipped"
+        }
+      },
+      "evidence": "measured",
+      "notes": "Skipped cases are declared test preconditions or opt-in paths, not failures. The aggregate must not be read as evidence that the open sampling case is green.",
+      "source": "private instrumented validation record, 2026-10-06"
+    },
+    {
+      "id": "alpha2-local-tool-shortlist-red",
+      "date": "2026-10-06",
+      "category": "local-inference",
+      "title": "Local tool-shortlist sampling: open model-selection red",
+      "revision": "0.1.1-alpha.2 / llama.cpp 0.5.0",
+      "runtime": {
+        "engine": "llama.cpp",
+        "version": "0.5.0",
+        "commit": null,
+        "build_variant": "CPU-only"
+      },
+      "model": "LFM2.5 1.2B Instruct Q4_0",
+      "execution_path": "local",
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device, low-memory class",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": null,
+        "provider": "maintainer test device"
+      },
+      "device_class": "32-bit ARM Android device, low-memory class",
+      "android": "Android 14 / API 34",
+      "protocol": "LocalInferenceDeviceTest tool-shortlist sampling, 3 executions",
+      "result": "OPEN RED: the model emitted no tool call in 0/3 executions. Code inspection and JVM guards show the expected shortlist was offered, so this measurement currently points to model sampling behavior rather than a proven tool-catalog plumbing defect.",
+      "measurements": {
+        "executions": 3,
+        "tool_calls": "0/3",
+        "temperature": 0.7,
+        "prompt_tokens": 880,
+        "expected_tool_family": "directory",
+        "observed_behavior": "no tool call"
+      },
+      "evidence": "measured",
+      "notes": "This is intentionally published as an open red. The earlier assertion wording suggested a wrong-family choice, but the device trace showed an absent call; the distinction matters for the next investigation.",
+      "source": "private LocalInferenceDeviceTest record, 2026-10-06"
     }
   ]
 }
