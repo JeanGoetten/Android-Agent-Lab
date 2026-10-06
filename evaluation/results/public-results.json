@@ -45,7 +45,7 @@
       "id": "T39-round73-full-inference",
       "date": "2026-10-01",
       "category": "local-inference",
-      "title": "Round 73 full local-inference battery on physical M13",
+      "title": "Round 73 full local-inference battery on a physical low-memory device",
       "revision": "alpha.95 device-validation checkpoint / T39",
       "runtime": {
         "engine": "llama.cpp",
@@ -57,7 +57,7 @@
       "execution_path": "local",
       "environment": {
         "type": "physical",
-        "device_class": "Samsung Galaxy M13 5G / low-memory class",
+        "device_class": "Samsung Galaxy M13 5G",
         "android": "Android 14 / API 34",
         "abi": "armeabi-v7a",
         "gpu": "Mali-G52",
