@@ -14,7 +14,7 @@ The model layer supports this workflow through API-hosted and local models. Curr
 
 ## Evaluation
 
-The laboratory records measurements from controlled tests and playtests. The dataset was updated on 2026-10-06 with the current 0.1.1-alpha.2 validation window, including live local inference, process-death recovery, the instrumented validation aggregate, and one explicitly published open local-inference red.
+The laboratory records measurements from controlled tests and playtests. The dataset was updated on 2026-10-06 with the current 0.1.1-alpha.2 validation window, including live local inference, process-death recovery, the instrumented validation aggregate, and one explicitly published open local-inference red. The dataset was updated on 2026-10-06 with the current 0.1.1-alpha.2 validation window, including live local inference, process-death recovery, the instrumented validation aggregate, and one explicitly published open local-inference red.
 
 Evaluation areas include:
 - project and file operations;
