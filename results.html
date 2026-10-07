@@ -1,21 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Test Results — Android Agent Lab</title><link rel="stylesheet" href="styles.css"></head><body><header class="site-header"><a class="wordmark" href="./">ANDROID AGENT <span>LAB</span></a><nav><a href="./">Lab</a><a href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Dataset</a><a href="https://github.com/JeanGoetten/Android-Agent-Lab">Repository</a></nav></header><main><section class="hero"><p class="eyebrow">02 / TEST RESULTS</p><h1>Published<br><em>measurements</em></h1><p class="lede">Sanitized, versioned results from Android Agent evaluation. Runtime version and execution environment are recorded as separate experimental dimensions.</p></section><section class="results-page"><div id="results-list" class="results-list"><p class="loading">Loading published results…</p></div><aside><p class="section-label">DATA</p><p>Source dataset</p><a href="evaluation/results/public-results.json">JSON record →</a><p>Schema</p><a href="evaluation/schemas/test-result.schema.json">Test-result schema →</a><p>Methodology</p><a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/methodology.md">Evaluation methodology →</a></aside></section></main><footer><span>ANDROID AGENT LAB</span><span><a href="https://github.com/JeanGoetten/Android-Agent-Lab">GitHub</a></span></footer><script>
-const esc=v=>String(v??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const metric=(k,v)=>'<div class="metric"><span>'+esc(k.replaceAll("_"," "))+'</span><strong>'+esc(typeof v==="object"?JSON.stringify(v):v)+'</strong></div>';
-async function loadResults(){
-  const target=document.getElementById("results-list");
-  try{
-    const response=await fetch("evaluation/results/public-results.json",{cache:"no-store"});
-    if(!response.ok) throw new Error("dataset unavailable");
-    const data=await response.json();
-    target.innerHTML=data.records.map(record=>{
-      const metrics=Object.entries(record.measurements||{}).filter(([k])=>k!=="note").slice(0,4).map(([k,v])=>metric(k,v)).join("");
-      const env=record.environment?.type||"";
-      const platform=record.environment?.android||record.android||"";
-      const abi=record.environment?.abi||"";
-      const meta=[record.date,env&&env+" · "+platform,abi,record.runtime?.version].filter(Boolean).map(esc).join("</span><span>");
-      return '<article class="result-card"><div class="result-top"><span class="result-category">'+esc(record.category)+'</span><span class="evidence '+esc(record.evidence)+'">'+esc(record.evidence)+'</span></div><h2>'+esc(record.title)+'</h2><p>'+esc(record.result)+'</p><div class="result-meta"><span>'+meta+'</span></div><div class="metrics">'+metrics+'</div></article>';
-    }).join("");
-  }catch(e){target.innerHTML='<p class="loading">The published dataset could not be loaded. <a href="evaluation/results/public-results.json">Open the data file directly →</a></p>';}
-}
-loadResults();
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sanitized, versioned test results from Android Agent evaluation."><title>Test Results &mdash; Android Agent Lab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Schibsted+Grotesk:wght@400;550;650;700&display=swap"><link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="site-header"><a class="wordmark" href="./">Android Agent <span>Lab</span></a><nav aria-label="Primary navigation"><a href="./">Lab</a><a href="results.html" aria-current="page">Results</a><a href="community.html">Community</a><a href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Dataset</a><a href="https://github.com/JeanGoetten/Android-Agent-Lab">Repository</a></nav></header>
+<main>
+<section class="hero-page"><h1>Published measurements</h1><p class="lede">Sanitized, versioned results from Android Agent evaluation. Runtime version and execution environment are recorded as separate experimental dimensions.</p></section>
+<section class="results-page">
+<div>
+<div id="filters" class="filters">
+<div id="chips" class="chips" role="group" aria-label="Filter by category"></div>
+<div class="filter-row"><input id="q" type="search" placeholder="Search results" aria-label="Search results"><select id="env" aria-label="Execution environment"><option value="all">All environments</option><option value="physical">Physical device</option><option value="avd">Emulator</option><option value="ci_avd">CI emulator</option><option value="unknown">Unspecified</option></select><select id="evidence" aria-label="Evidence type"><option value="all">All evidence</option><option value="measured">Measured</option><option value="derived">Derived</option></select></div>
+</div>
+<p id="count" class="count" aria-live="polite"></p>
+<div id="results-list" class="results-list" aria-live="polite"><p class="loading">Loading published results&hellip;</p></div>
+</div>
+<aside>
+<h2>Evidence types</h2>
+<p><b>Measured</b> records come directly from a test run. <b>Derived</b> records are calculated from published measured records.</p>
+<h2>Data</h2>
+<p><a href="evaluation/results/public-results.json">JSON dataset &rarr;</a></p>
+<p><a href="evaluation/schemas/test-result.schema.json">Test-result schema &rarr;</a></p>
+<p><a href="https://github.com/JeanGoetten/Android-Agent-Lab/blob/main/docs/methodology.md">Evaluation methodology &rarr;</a></p>
+</aside>
+</section>
+</main>
+<footer><span>Android Agent Lab</span><span><a href="https://github.com/JeanGoetten/Android-Agent-Lab">GitHub</a> &middot; Public technical record</span></footer>
+<script src="app.js" defer></script>
+</body></html>

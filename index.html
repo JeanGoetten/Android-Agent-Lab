@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Public technical record, evaluation data, and engineering history for Android Agent.">
   <title>Android Agent Lab</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Schibsted+Grotesk:wght@400;550;650;700&display=swap"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="wordmark" href="./">ANDROID AGENT <span>LAB</span></a>
+    <a class="wordmark" href="./">Android Agent <span>Lab</span></a>
     <nav aria-label="Primary navigation">
       <a href="#focus">Focus</a>
       <a href="#results">Results</a>
@@ -22,8 +22,8 @@
 
   <main>
     <section class="hero">
-      <p class="eyebrow">PUBLIC TECHNICAL RECORD</p>
-      <h1>Android Agent<br><em>Lab</em></h1>
+      
+      <h1>Android Agent<br>Lab</h1>
       <p class="lede">
         A public technical surface for the architecture, evaluation data,
         measured results, and engineering history of Android Agent.
@@ -33,10 +33,11 @@
         <a class="button" href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Open evaluation data</a>
         <a class="button" href="community.html">Community portal</a>
       </div>
+      <div class="readout" id="readout" aria-label="Dataset summary"><p class="loading">Loading&hellip;</p></div>
     </section>
 
     <section class="section-grid" id="focus">
-      <div class="section-label">01 / CURRENT FOCUS</div>
+      <div class="section-label">Current focus</div>
       <div class="section-content">
         <h2>Project control on Android</h2>
         <p>
@@ -45,18 +46,18 @@
           mobile development workflow.
         </p>
         <div class="feature-list">
-          <article><b>01</b><span>Execution state and recovery</span></article>
-          <article><b>02</b><span>Process lifecycle and battery constraints</span></article>
-          <article><b>03</b><span>Workspace and filesystem safety</span></article>
-          <article><b>04</b><span>Network and API failure handling</span></article>
-          <article><b>05</b><span>User decisions and cancellation</span></article>
-          <article><b>06</b><span>Model routing and context preparation</span></article>
+          <article><span>Execution state and recovery</span></article>
+          <article><span>Process lifecycle and battery constraints</span></article>
+          <article><span>Workspace and filesystem safety</span></article>
+          <article><span>Network and API failure handling</span></article>
+          <article><span>User decisions and cancellation</span></article>
+          <article><span>Model routing and context preparation</span></article>
         </div>
       </div>
     </section>
 
     <section class="results-section" id="results">
-      <div class="section-label">02 / TEST RESULTS</div>
+      <div class="section-label">Test results</div>
       <div class="section-content">
         <div class="results-heading">
           <div>
@@ -69,14 +70,15 @@
           </div>
           <a class="text-link" href="https://github.com/JeanGoetten/Android-Agent-Lab/tree/main/evaluation">Dataset →</a>
         </div>
-        <div id="results-list" class="results-list" aria-live="polite">
+        <div id="results-list" class="results-list" data-limit="3" aria-live="polite">
           <p class="loading">Loading published results…</p>
         </div>
+        <div style="margin-top:22px"><a id="results-more" class="text-link" href="results.html" hidden></a></div>
       </div>
     </section>
 
     <section class="section-grid" id="record">
-      <div class="section-label">03 / ENGINEERING RECORD</div>
+      <div class="section-label">Engineering record</div>
       <div class="section-content">
         <h2>What the lab records</h2>
         <p>
@@ -87,22 +89,22 @@
         </p>
         <div class="record-grid">
           <article>
-            <span class="record-index">01</span>
+            
             <h3>Architecture</h3>
             <p>Project workspace, execution control, runtime resilience, model layer, routing, and presentation.</p>
           </article>
           <article>
-            <span class="record-index">02</span>
+            
             <h3>Playtests</h3>
             <p>Observed failures, root causes, corrections, and revalidation history.</p>
           </article>
           <article>
-            <span class="record-index">03</span>
+            
             <h3>Runtime experiments</h3>
             <p>Inference, tool calling, process behavior, network conditions, and Android platform constraints.</p>
           </article>
           <article>
-            <span class="record-index">04</span>
+            
             <h3>Derived analysis</h3>
             <p>Aggregates and comparisons generated from the underlying published records.</p>
           </article>
@@ -111,7 +113,7 @@
     </section>
 
     <section class="section-grid" id="docs">
-      <div class="section-label">04 / DOCUMENTATION</div>
+      <div class="section-label">Documentation</div>
       <div class="section-content">
         <h2>Technical documents</h2>
         <p>Documents open on their corresponding GitHub repository pages, where their source and revision history remain visible.</p>
@@ -130,52 +132,10 @@
   </main>
 
   <footer>
-    <span>ANDROID AGENT LAB</span>
+    <span>Android Agent Lab</span>
     <span><a href="https://github.com/JeanGoetten/Android-Agent-Lab">GitHub</a> · Public technical record</span>
   </footer>
 
-  <script>
-    const esc = (value) => String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[c]));
-
-    const formatMeasurement = (key, value) => {
-      if (value === null || value === undefined) return "";
-      return "<div class=\"metric\"><span>" + esc(key.replaceAll("_"," ")) + "</span><strong>" + esc(value) + "</strong></div>";
-    };
-
-    async function loadResults() {
-      const target = document.getElementById("results-list");
-      try {
-        const response = await fetch("evaluation/results/public-results.json", {cache: "no-store"});
-        if (!response.ok) throw new Error("dataset unavailable");
-        const data = await response.json();
-        target.innerHTML = data.records.map(record => {
-          const metrics = Object.entries(record.measurements || {})
-            .filter(([k]) => k !== "note")
-            .slice(0, 4)
-            .map(([k,v]) => formatMeasurement(k,v)).join("");
-          return `
-            <article class="result-card">
-              <div class="result-top">
-                <span class="result-category">${esc(record.category)}</span>
-                <span class="evidence ${esc(record.evidence)}">${esc(record.evidence)}</span>
-              </div>
-              <h3>${esc(record.title)}</h3>
-              <p>${esc(record.result)}</p>
-              <div class="result-meta">
-                <span>${esc(record.date)}</span>
-                <span>${esc(record.device_class)}</span>
-                ${record.model ? "<span>" + esc(record.model) + "</span>" : ""}
-              </div>
-              <div class="metrics">${metrics}</div>
-            </article>`;
-        }).join("");
-      } catch (error) {
-        target.innerHTML = '<p class="loading">The published dataset could not be loaded. <a href="evaluation/results/public-results.json">Open the data file directly →</a></p>';
-      }
-    }
-    loadResults();
-  </script>
+  <script src="app.js" defer></script>
 </body>
 </html>
