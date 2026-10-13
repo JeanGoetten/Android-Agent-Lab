@@ -1,31 +1,29 @@
 # Publishing policy
 
-Android Agent Lab maintains the public technical record of Android Agent.
+Android Agent Lab is a curated public technical record. Publication follows:
 
-The publication workflow is:
+**development → verification → sanitization and commercial-sensitivity review → structured result → publication**
 
-**development → test → structured result → review → publication**
+## Publication boundary
 
-## Published material
+Publish only information needed to interpret a finding: version, generalized environment, test method, measured outcome, scope, and caveats.
 
-The laboratory can publish:
-- test datasets;
-- measured performance;
-- evaluation protocols;
-- architecture documentation;
-- technical observations;
-- reproducible summaries;
-- historical result records;
-- charts and derived analysis.
+Do **not** disclose:
+- personal information, unique device identity, accounts, credentials, tokens, private project content, or identifiable test conversations;
+- private repository locations, raw diagnostic logs, process IDs, internal file paths, infrastructure or access details;
+- unreleased product differentiators, unpublished implementation mechanisms, security-sensitive design specifics, proprietary prompts or orchestration, and commercially sensitive roadmap details;
+- internal administrative or account circumstances unrelated to the technical meaning of a measurement.
 
-## Test data
+A feature planned or developed privately is not automatically appropriate for public documentation. Public discussion of architecture should remain at capability level unless separately cleared.
 
-Structured test data is a primary purpose of this repository.
+## Honest technical status
 
-Results should be stored in machine-readable form whenever practical. Documentation and the website can then present the same underlying records in human-readable form.
+Differentiate complete suite results from scoped checks, emulator from physical-device observations, and built artifacts from field acceptance. Unperformed or interrupted tests should be labelled **not evaluated** or **inconclusive**, without inferring either failure or success. Exclude nontechnical reasons for absence of evidence.
 
-Each record should retain enough metadata to understand when, how, and under which software/model conditions the measurement was produced.
+Do not equate a distributed binary with an independently validated user journey. Do not infer process-death recovery merely from successful app reopening.
 
-## History
+## Data and provenance
 
-Published measurements are retained as a historical record. Corrections should preserve the original provenance and document the reason for the change.
+Prefer machine-readable, append-only results. Record version and protocol, anonymized environment, measured values, original limitations, and a non-public provenance reference where needed. Preserve earlier failures and skipped cases without silently rewriting history. Maintain exact source evidence privately while publishing only its sanitized interpretation.
+
+Public-site copy must undergo the same checks as dataset entries. Reviewed records are safe for publication only after removal of commercially sensitive or identifiable content.
