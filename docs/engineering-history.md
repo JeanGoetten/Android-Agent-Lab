@@ -1,100 +1,49 @@
 # Engineering history
 
-This page summarizes technical work that can be represented in the public laboratory without exposing private source, credentials, raw operational logs, or unique device identifiers.
+This public summary records validated outcomes and released capabilities. It intentionally excludes private implementation details and internal operational history.
 
-## Reliability and execution
+## Reliability and workflow continuity
 
-Recent engineering rounds established and refined:
+The development line has progressively improved durable task state, restoration after interruption, project-level workflows, and user-visible decisions. Evaluation distinguishes controlled recovery tests from observations of long-running work in ordinary device use.
 
-- structured terminal states for runs and tool execution;
-- persisted execution activity and transcript continuity;
-- recovery after process interruption;
-- per-session execution ownership;
-- cancellation and stop behavior;
-- explicit user-decision points;
-- workspace-safe filesystem operations;
-- structured diagnostics.
+### October 6 baseline
 
-These changes were driven by a combination of adversarial review and device playtesting.
+Version **0.1.1-alpha.2** added measured public validation records:
+- live local-model end-to-end flow: **3/3** runs;
+- external process-death draft recovery: **10/10** cases;
+- instrumented validation chunks: **342 passed, 19 skipped, 0 completed-case failures**;
+- a separate local tool-call sampling case remained unresolved: **0/3** calls.
 
-## Project preview and workspace control
+The unresolved result remains visible rather than being hidden by the aggregate.
 
-The project workflow gained a sanctioned local preview path for web projects, workspace import/export, and Git operations scoped to the project workspace.
+## October 10–13 validation checkpoints
 
-The public record can track these capabilities as workflow tests rather than exposing implementation internals.
+Subsequent release checkpoints include complete automated instrumented suites and narrower controlled emulator tests. These remain distinct kinds of evidence.
 
-## Attachments and project context
+| Revision | Measurement | Outcome |
+| --- | --- | --- |
+| alpha.8 | Complete instrumented suite | 451 cases, 0 failures, 39 skipped |
+| alpha.9 | Complete instrumented suite | 452 cases, 0 failures, 39 skipped |
+| alpha.18 | Complete instrumented suite | 494 cases, 0 failures, 39 skipped |
+| alpha.19 | Complete instrumented suite | 496 cases, 0 failures, 39 skipped |
+| alpha.22 | Scoped file workflow verification | 50 cases, 0 failures |
+| alpha.23 | Scoped project-board verification | 47 cases, 0 failures |
+| alpha.31 | Scoped task-decision verification | 23 Android cases, 0 failures; 1,532 JVM cases, 0 failures, 2 skipped |
 
-Recent work addressed:
+A passing scoped test does not establish complete product acceptance. The revision-specific dataset records preserve test environment and limitations.
 
-- binary-file handling;
-- PDF extraction behavior;
-- image input and retry persistence;
-- attachment size/prompt accounting;
-- cross-model task context;
-- context preparation and compaction.
+## Physical playtest observations
 
-These are useful candidates for repeatable end-to-end evaluation records.
+A physical playtest of **alpha.26** observed an ongoing task after an extended period away from the application. Tool work and artifacts were observed in the session. This is meaningful continuity evidence, **not** proof that the Android process was terminated and recovered, or that useful work ran continuously throughout the entire interval.
 
-## Model execution
+A separate short local-inference measurement on a 32-bit ARM device recorded **2.92 generated tokens/s** on average across three valid runs and **5.402 seconds** median time to first token. This describes a particular small benchmark rather than general agent competence.
 
-The project has a dedicated local-inference evaluation track covering:
+## Product-facing progress
 
-- model loading and failure diagnostics;
-- cold and warm execution;
-- prompt prefill;
-- generation throughput;
-- tool selection and argument generation;
-- context/cache behavior;
-- stop responsiveness.
+Recent checkpoints have covered project navigation, file search and preview, project-board interaction, task drafts, contextual decisions and notifications. Implementation progress, scoped automated tests and physical-device acceptance are reported as separate milestones.
 
-The llama.cpp 0.5.0 integration is now part of the engineering baseline, while the earlier 0.4.1 measurements remain historical comparison data.
+## Next evaluations
 
-## Android runtime constraints
+Useful future public series include repeated task-continuity trials under controlled interruption conditions, feedback latency, contextual decision visibility, and comparisons on matching hardware and workloads. No test is assigned a passing result in advance.
 
-The evaluation history also covers Android-specific conditions affecting long-running development workflows:
-
-- process lifecycle;
-- background execution;
-- battery-management behavior;
-- thermal/resource conditions;
-- network interruption and recovery;
-- storage and permission constraints.
-
-These can become a dedicated public dataset as repeat measurements accumulate.
-
-
-## 2026-10-06 validation window
-
-The current development line reached **0.1.1-alpha.2** and added a new set of measured records to the public dataset:
-
-- the live local-model end-to-end path completed **3/3** runs on an Android AVD, including a real chat send, the expected `list_directory` call, KV-cache reuse and a durable answer;
-- the external process-death matrix completed **10/10** cases, including recovery of composer text and ordered attachments and explicit handling of a missing image copy;
-- the broader instrumented validation window completed **361 cases across 95 classes**, with **342 passed, 19 skipped and 0 completed-case failures** in the four recorded chunks;
-- one local-inference sampling case remains an **open measured red**: the model emitted no tool call in **0/3** executions despite the expected shortlist being present. This remains a model-sampling investigation rather than a declared tool-plumbing failure.
-
-The public dataset records these as append-only measurements. Device identity, package paths, process identifiers, credentials and raw operational logs remain outside the public record.
-
-## 2026-10-06 validation window
-
-The current development line reached **0.1.1-alpha.2** and added a new set of measured records to the public dataset:
-
-- the live local-model end-to-end path completed **3/3** runs on an Android AVD, including a real chat send, the expected `list_directory` call, KV-cache reuse and a durable answer;
-- the external process-death matrix completed **10/10** cases, including recovery of composer text and ordered attachments and explicit handling of a missing image copy;
-- the broader instrumented validation window completed **361 cases across 95 classes**, with **342 passed, 19 skipped and 0 completed-case failures** in the four recorded chunks;
-- one local-inference sampling case remains an **open measured red**: the model emitted no tool call in **0/3** executions despite the expected shortlist being present. This remains a model-sampling investigation rather than a declared tool-plumbing failure.
-
-The public dataset records these as append-only measurements. Device identity, package paths, process identifiers, credentials and raw operational logs remain outside the public record.
-
-## Next public data layers
-
-The laboratory can progressively add:
-
-1. repeat measurements for the same protocol across revisions;
-2. API-model workflow results;
-3. process-kill and recovery experiments;
-4. task-state consistency tests;
-5. notification and user-decision tests;
-6. context/routing measurements;
-7. aggregate charts derived from the raw public records;
-8. historical release/playtest summaries.
+See [the versioned evaluation dataset](../evaluation/results/public-results.json) and [methodology](methodology.md) for the evidence boundaries.
