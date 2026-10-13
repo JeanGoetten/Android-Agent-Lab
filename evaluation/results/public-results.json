@@ -1,6 +1,6 @@
 {
-  "dataset_version": "1.2",
-  "last_updated": "2026-10-06",
+  "dataset_version": "1.3",
+  "last_updated": "2026-10-13",
   "records": [
     {
       "id": "T39-local-inference-run2",
@@ -511,6 +511,324 @@
       "evidence": "measured",
       "notes": "This is intentionally published as an open red. The earlier assertion wording suggested a wrong-family choice, but the device trace showed an absent call; the distinction matters for the next investigation.",
       "source": "private LocalInferenceDeviceTest record, 2026-10-06"
+    },
+    {
+      "id": "alpha8-full-instrumented",
+      "date": "2026-10-10",
+      "category": "device-validation",
+      "title": "Complete instrumented suite checkpoint",
+      "revision": "0.1.1-alpha.8",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.8",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "automated test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Complete instrumented suite",
+      "result": "The completed instrumented report recorded no failures. Skipped tests remain explicit and are not counted as passes.",
+      "measurements": {
+        "cases": 451,
+        "failures": 0,
+        "skipped": 39
+      },
+      "evidence": "measured",
+      "notes": "This is a version-specific automated checkpoint, not complete physical-device acceptance.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha9-full-instrumented",
+      "date": "2026-10-10",
+      "category": "device-validation",
+      "title": "Subsequent full instrumented checkpoint",
+      "revision": "0.1.1-alpha.9",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.9",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "automated test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Complete instrumented suite",
+      "result": "The subsequent full instrumented report recorded no failures, with skipped cases separately reported.",
+      "measurements": {
+        "cases": 452,
+        "failures": 0,
+        "skipped": 39
+      },
+      "evidence": "measured",
+      "notes": "Do not add results from different revisions as independent unique test coverage.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha18-full-instrumented",
+      "date": "2026-10-11",
+      "category": "device-validation",
+      "title": "Project workflow full-suite checkpoint",
+      "revision": "0.1.1-alpha.18",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.18",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "automated test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Complete instrumented suite",
+      "result": "The full instrumented report completed without failures and retained its declared skips.",
+      "measurements": {
+        "cases": 494,
+        "failures": 0,
+        "skipped": 39
+      },
+      "evidence": "measured",
+      "notes": "A successful automated suite does not independently demonstrate real-model or physical-device acceptance.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha19-full-instrumented",
+      "date": "2026-10-11",
+      "category": "device-validation",
+      "title": "Task-list full-suite checkpoint",
+      "revision": "0.1.1-alpha.19",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.19",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "ci_avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "automated test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Complete instrumented suite",
+      "result": "The full instrumented report completed with zero failures and separately reported skipped cases.",
+      "measurements": {
+        "cases": 496,
+        "failures": 0,
+        "skipped": 39
+      },
+      "evidence": "measured",
+      "notes": "The result applies to the specified revision and protocol.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha22-files-scoped-device",
+      "date": "2026-10-11",
+      "category": "workflow-validation",
+      "title": "Project file navigation and search verification",
+      "revision": "0.1.1-alpha.22",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.22",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "controlled test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Scoped six-class Android API 34 instrumented window",
+      "result": "The final scoped window passed all 50 cases. A separate manual emulator journey exercised search within unopened folders, Preview and file context actions.",
+      "measurements": {
+        "scoped_cases": 50,
+        "failures": 0,
+        "skipped": 0,
+        "manual_environment": "emulator"
+      },
+      "evidence": "measured",
+      "notes": "Earlier unsuccessful test attempts remain in the private evidence history. This record does not assert full-suite approval or physical-device acceptance.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha23-board-scoped-device",
+      "date": "2026-10-12",
+      "category": "workflow-validation",
+      "title": "Live project-board interaction verification",
+      "revision": "0.1.1-alpha.23",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.23",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "controlled test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Scoped eight-class Android API 34 instrumented window",
+      "result": "The final scoped window passed all 47 cases, covering live board reads, contextual editing, navigation and restoration. A bounded manual emulator journey provided additional visual evidence.",
+      "measurements": {
+        "scoped_cases": 47,
+        "failures": 0,
+        "skipped": 0
+      },
+      "evidence": "measured",
+      "notes": "Results concern controlled emulator workflows, not unrestricted real-world task completion.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha26-long-running-playtest",
+      "date": "2026-10-12",
+      "category": "runtime-resilience",
+      "title": "Long-running task continuity observation",
+      "revision": "0.1.1-alpha.26",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.26",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": null,
+        "provider": "physical playtest"
+      },
+      "device_class": "32-bit ARM Android device",
+      "android": "Android 14 / API 34",
+      "protocol": "Unscripted physical-device playtest with app backgrounding and reopening",
+      "result": "A requested task was observed still in execution after the tester left the application for an extended interval and returned. Tool activity and generated artifacts were observed in the evaluated session.",
+      "measurements": {
+        "app_backgrounded": true,
+        "task_active_on_return": true,
+        "process_death_verified": false
+      },
+      "evidence": "measured",
+      "notes": "This is a qualitative observation. It does not establish continuous execution throughout the whole interval, nor recovery after operating-system process termination.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha26-local-inference-short",
+      "date": "2026-10-12",
+      "category": "local-inference",
+      "title": "Short on-device generation performance measurement",
+      "revision": "0.1.1-alpha.26",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.26",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "physical",
+        "device_class": "32-bit ARM Android device",
+        "android": "Android 14 / API 34",
+        "abi": "armeabi-v7a",
+        "gpu": null,
+        "provider": "physical playtest"
+      },
+      "device_class": "32-bit ARM Android device",
+      "android": "Android 14 / API 34",
+      "protocol": "Three valid short local-inference measurements",
+      "result": "Three short measurements reported average generation throughput of 2.92 tokens per second and median first-token latency of 5.402 seconds.",
+      "measurements": {
+        "valid_runs": 3,
+        "mean_generation_tokens_per_second": 2.92,
+        "median_first_token_seconds": 5.402
+      },
+      "evidence": "measured",
+      "notes": "Short device-runtime benchmark only. It does not measure general agent quality or longer workloads.",
+      "source": "Sanitized internal verification record"
+    },
+    {
+      "id": "alpha31-contextual-approval-scoped",
+      "date": "2026-10-13",
+      "category": "workflow-validation",
+      "title": "Task-scoped approval and notification verification",
+      "revision": "0.1.1-alpha.31",
+      "runtime": {
+        "engine": "Android Agent",
+        "version": "0.1.1-alpha.31",
+        "commit": null,
+        "build_variant": "evaluation checkpoint"
+      },
+      "model": null,
+      "execution_path": null,
+      "environment": {
+        "type": "avd",
+        "device_class": "Android virtual device",
+        "android": "Android 14 / API 34",
+        "abi": "x86_64",
+        "gpu": null,
+        "provider": "controlled test environment"
+      },
+      "device_class": "Android virtual device",
+      "android": "Android 14 / API 34",
+      "protocol": "Targeted Android API 34 instrumented window and JVM regression suite",
+      "result": "The final 23-case Android instrumented window completed without failures. The JVM regression suite recorded 1,532 cases, no failures or errors, and two platform-limited skips.",
+      "measurements": {
+        "instrumented_cases": 23,
+        "instrumented_failures": 0,
+        "jvm_cases": 1532,
+        "jvm_failures": 0,
+        "jvm_skipped": 2
+      },
+      "evidence": "measured",
+      "notes": "This is local automated verification. It does not claim complete physical-device acceptance or a completed remote full-suite run.",
+      "source": "Sanitized internal verification record"
     }
   ]
 }
