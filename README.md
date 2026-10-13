@@ -14,7 +14,7 @@ The model layer supports this workflow through API-hosted and local models. Curr
 
 ## Evaluation
 
-The laboratory records measurements from controlled tests and playtests. The dataset was updated on 2026-10-06 with the current 0.1.1-alpha.2 validation window, including live local inference, process-death recovery, the instrumented validation aggregate, and one explicitly published open local-inference red. The dataset was updated on 2026-10-06 with the current 0.1.1-alpha.2 validation window, including live local inference, process-death recovery, the instrumented validation aggregate, and one explicitly published open local-inference red.
+The laboratory records measurements from controlled tests and playtests. The versioned dataset includes the October 6 baseline and additional sanitized October 10–13 validation checkpoints, covering automated suites, bounded project workflows, physical continuity observations, and local-inference measurements. Every record distinguishes test scope from broader acceptance.
 
 Evaluation areas include:
 - project and file operations;
@@ -30,7 +30,7 @@ Evaluation areas include:
 
 **[Browse the published test results →](https://jeangoetten.github.io/Android-Agent-Lab/results.html)**
 
-The [evaluation dataset](evaluation/README.md) is the canonical public location for structured test records.
+The [evaluation dataset](evaluation/README.md) is the canonical public location for structured test records. Public results contain only reviewed, non-identifying measurements; commercial-sensitive internals and private operational details are excluded.
 
 ## Documentation
 
