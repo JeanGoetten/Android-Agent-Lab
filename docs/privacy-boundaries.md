@@ -1,25 +1,25 @@
 # Data boundaries
 
-The public laboratory records technical information required to understand and reproduce published evaluations.
+The public laboratory describes reproducible observations without reproducing private project materials.
 
-## Technical data
+## Eligible technical information
 
-The public record can include:
-- software and runtime revisions;
-- model identifiers and execution paths;
-- sanitized device classes;
-- Android platform information;
-- test protocols;
-- measured timings and outcomes;
-- aggregate resource measurements;
-- structured logs and derived metrics when appropriate.
+- tested software versions and generalized runtime environments;
+- non-identifying device classes, ABI and Android platform;
+- controlled test protocols and aggregate numerical outcomes;
+- explicit limitations and separate measured, inferred, and not-evaluated states;
+- capability-level historical summaries of already released behavior.
 
-## Personal and operational data
+## Excluded information
 
-Personal identifiers, credentials, authentication material, private filesystem paths, unique device identifiers, and internal infrastructure details are handled separately from the public test dataset.
+- personal identifiers, unique handset attributes, credentials, private conversations or user workspaces;
+- raw device logs, internal filesystem paths, process identifiers, infrastructure, access and account metadata;
+- private source locations and sensitive implementation details;
+- proprietary orchestration, internal security design, unpublished capabilities or commercial roadmap specifics;
+- administrative circumstances irrelevant to interpreting test evidence.
 
-## Dataset principle
+## Publication principle
 
-The goal is to preserve the technical signal of a test while removing information that has no value for interpreting the result.
+Retain the smallest sufficient public dataset. Generalize environment fields and redact sensitive provenance before commit. A public record should report **what was observed under which conditions**, not reveal the private execution trace.
 
-This boundary is applied during publication rather than after the public dataset has been assembled.
+A missing verification is neither a passed nor a failed test; label it plainly as not evaluated. Review every future addition for identifiability, commercial exposure and unintended disclosure.
